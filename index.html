@@ -23,6 +23,8 @@
   <meta name="theme-color" content="#0f456f">
   <link rel="icon" href="images/srk-logo.jpeg" type="image/jpeg" sizes="80x80">
   <link rel="apple-touch-icon" href="images/srk-logo.jpeg">
+  <link rel="preload" as="image" href="images/image2.jpeg">
+  <link rel="preload" as="image" href="images/image1.jpg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -57,14 +59,14 @@
     <div class="hero-slider">
       <div class="hero-slide active" data-slide-type="video">
         <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablePictureInPicture>
-          <source src="images/DJI_0278%20(online-video-cutter.com).mp4" type="video/mp4">
+          <source src="images/VID-20260130-WA0038.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-slide" data-slide-type="image">
-        <img src="images/image2.jpeg" alt="Cold storage facility">
+        <img src="images/image2.jpeg" alt="Cold storage facility" loading="eager" fetchpriority="high">
       </div>
       <div class="hero-slide" data-slide-type="image">
-        <img src="images/image3.png" alt="Cold storage facility">
+        <img src="images/image3.png" alt="Cold storage facility" loading="eager">
       </div>
     </div>
     <div class="hero-slider-nav">
@@ -83,7 +85,7 @@
         <p>Our focus is on reducing post-harvest losses, maintaining cold-chain integrity, and supporting a reliable agricultural supply chain.</p>
       </div>
       <div class="hero-media">
-        <img src="images/image1.jpg" alt="Cold storage facility">
+        <img src="images/image1.jpg" alt="Cold storage facility" loading="eager" decoding="async">
       </div>
     </section>
 
@@ -126,7 +128,7 @@
         </div>
       </div>
       <div class="chambers-media">
-        <img src="images/image4.png" alt="15,000 Metric Tonnes Capacity Cold Storage" loading="lazy">
+        <img src="images/image4.png" alt="15,000 Metric Tonnes Capacity Cold Storage" loading="eager" decoding="async">
       </div>
     </section>
   </main>

@@ -98,16 +98,25 @@ document.addEventListener('DOMContentLoaded', function() {
     heroVideoEl.playsInline = true;
     heroVideoEl.setAttribute('playsinline', '');
     heroVideoEl.playbackRate = 1.0;
+    heroVideoEl.volume = 0;
 
     function tryPlay() {
-      heroVideoEl.play().catch(function() {});
+      var p = heroVideoEl.play();
+      if (p && typeof p.then === 'function') {
+        p.catch(function() {});
+      }
     }
     tryPlay();
+    heroVideoEl.addEventListener('loadedmetadata', tryPlay);
     heroVideoEl.addEventListener('loadeddata', tryPlay);
     heroVideoEl.addEventListener('canplay', tryPlay);
+    heroVideoEl.addEventListener('canplaythrough', tryPlay);
+    setTimeout(tryPlay, 300);
+    setTimeout(tryPlay, 1000);
     heroVideoEl.addEventListener('visibilitychange', function() {
       if (document.visibilityState === 'visible' && heroVideoEl.closest('.hero-slide.active')) {
         heroVideoEl.playbackRate = 1.0;
+        heroVideoEl.muted = true;
         tryPlay();
       }
     });

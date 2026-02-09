@@ -483,6 +483,8 @@ main.about-page { padding: 40px 0 64px; }
   font-size: 15px;
   line-height: 1.65;
   margin-bottom: 16px;
+  font-weight: 700;
+  font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
 }
 .about-hero-copy .about-body {
