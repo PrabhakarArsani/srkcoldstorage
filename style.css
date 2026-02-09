@@ -92,6 +92,10 @@ a:hover { text-decoration: underline; }
   height: 100%;
   object-fit: cover;
 }
+.hero-slide video {
+  pointer-events: none;
+  outline: none;
+}
 .hero-banner-overlay {
   position: absolute;
   inset: 0;
@@ -168,6 +172,14 @@ a:hover { text-decoration: underline; }
   z-index: 1000;
 }
 .brand { display: flex; align-items: center; gap: 14px; }
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+.brand-link:hover { text-decoration: none; }
 .brand img { height: 100px; width: 100px; object-fit: contain; }
 .brand h1 { font-size: 26px; text-transform: uppercase; }
 .eyebrow { letter-spacing: 0.08em; text-transform: uppercase; font-size: 12px; opacity: 0.85; }
@@ -1424,6 +1436,7 @@ main.about-page { padding: 40px 0 64px; }
     flex: 1;
     min-width: 0;
   }
+  .brand-link { min-width: 0; }
   .brand img {
     height: 70px;
     width: 70px;

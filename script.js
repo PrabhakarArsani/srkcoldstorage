@@ -49,7 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // Play video when entering video slide
       if (heroVideo && slides[index].getAttribute('data-slide-type') === 'video') {
         heroVideo.currentTime = 0;
-        heroVideo.play();
+        heroVideo.playbackRate = 1.0;
+        heroVideo.muted = true;
+        heroVideo.play().catch(function() {});
       }
     }
 
@@ -88,10 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
     startSlider();
   }
 
-  // Video play attempt (for autoplay)
+  // Hero video: force autoplay on all devices (muted + playsInline required for iOS/Android)
   const heroVideoEl = document.getElementById('hero-video');
   if (heroVideoEl) {
-    heroVideoEl.play().catch(function() {});
+    heroVideoEl.muted = true;
+    heroVideoEl.setAttribute('muted', '');
+    heroVideoEl.playsInline = true;
+    heroVideoEl.setAttribute('playsinline', '');
+    heroVideoEl.playbackRate = 1.0;
+
+    function tryPlay() {
+      heroVideoEl.play().catch(function() {});
+    }
+    tryPlay();
+    heroVideoEl.addEventListener('loadeddata', tryPlay);
+    heroVideoEl.addEventListener('canplay', tryPlay);
+    heroVideoEl.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible' && heroVideoEl.closest('.hero-slide.active')) {
+        heroVideoEl.playbackRate = 1.0;
+        tryPlay();
+      }
+    });
   }
 });
 
